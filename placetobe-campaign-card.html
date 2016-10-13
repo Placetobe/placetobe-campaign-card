@@ -28,8 +28,13 @@ Placetobe Campaign Card
         flex-direction: column;
         align-items: stretch;
         flex: 1;
+        background-color: white;
       }
 
+      :host[horizontal-layout] #container {
+        flex-direction: row-reverse;
+        align-items: stretch;
+      }
 
       :host #container:hover:after {
         position: absolute;
@@ -49,13 +54,18 @@ Placetobe Campaign Card
         z-index: 1;
       }
 
+      :host[horizontal-layout] iron-image {
+        height: auto;
+        flex:2;
+      }
+
       :host section {
         position: relative;
         z-index: 1;
         display: flex;
         flex-direction: column;
-        flex: 2;
         padding-right: 72px;
+        flex:1;
       }
 
       :host h6 {
@@ -160,9 +170,10 @@ Placetobe Campaign Card
       is: 'placetobe-campaign-card',
 
       properties: {
-        prop1: {
-          type: String,
-          value: 'placetobe-campaign-card',
+        horizontal: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
         },
       },
 
