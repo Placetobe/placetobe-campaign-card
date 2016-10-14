@@ -62,11 +62,26 @@ Placetobe Campaign Card
         height: 172px;
         position: relative;
         z-index: 1;
+        background-color: var(--placetobe-color-gray);
       }
 
       :host[horizontal-layout] iron-image {
         height: auto;
         flex:2;
+      }
+
+      @media (min-width: 600px) {
+        :host[horizontal-layout] iron-image {
+          min-width: calc(50% - 18px);
+          max-width: calc(50% - 18px);
+        }
+      }
+
+      @media (min-width: 990px) {
+        :host[horizontal-layout] iron-image {
+          min-width: calc(66.666% - 12px);
+          max-width: calc(66.666% - 12px);
+        }
       }
 
       :host section {
@@ -164,12 +179,13 @@ Placetobe Campaign Card
       <iron-image
         src$="[[imageUrl]]"
         sizing="cover"
+        fade
       ></iron-image>
       
       <section>
         
         <header>
-          <h6>[[labels]] campagne</h6>
+          <h6>[[labels]]</h6>
           <h2>[[title]]</h2>
         </header>
 
@@ -191,7 +207,7 @@ Placetobe Campaign Card
           <div class="rolling-container">
             <div class="rolling-content" data-rolling$="[[hasLink]]">
               <strong>[[numberOfFunders]]</strong> investeerders<br>
-              <span hidden$="[[closed]]">nog <strong>[[daysLeft]]</strong> dagen<br></span>
+              <span hidden$="[[closed]]">nog <strong>[[daysLeft]]</strong> dagen</span>
               <span hidden$="[[!closed]]">deze campagne is [[statusLabel]]</span>
               <br>
               <a class="button">Bekijk project</a>
