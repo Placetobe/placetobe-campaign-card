@@ -5,6 +5,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.6.0",
     "caas-campaign": "CaasElements/caas-campaign",
+    "caas-campaign-stats": "CaasElements/caas-campaign-stats",
     "placetobe-styles": "Placetobe/placetobe-styles",
     "placetobe-button": "Placetobe/placetobe-button",
     "placetobe-campaign-progress-bar": "Placetobe/placetobe-campaign-progress-bar",
@@ -16,6 +17,6 @@
     "web-component-tester": "^4.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   },
-  "version": "0.1.0",
+  "version": "0.9.0",
   "homepage": "https://github.com/Placetobe/placetobe-campaign-page"
 }

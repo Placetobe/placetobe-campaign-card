@@ -1,6 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../caas-campaign/caas-campaign.html">
+<link rel="import" href="../caas-campaign-stats/caas-campaign-stats.html">
 <link rel="import" href="../placetobe-styles/placetobe-styles.html">
 <link rel="import" href="../placetobe-campaign-progress-bar/placetobe-campaign-progress-bar.html">
 
@@ -23,7 +24,6 @@ Placetobe Campaign Card
         color: var(--placetobe-color-darkblue);
         position: relative;
         z-index: 0;
-        cursor: pointer;
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -35,7 +35,18 @@ Placetobe Campaign Card
         align-items: stretch;
       }
 
-      :host #container:hover:after {
+      :host #link {
+        position: absolute;
+        top: -18px;
+        right: -18px;
+        bottom: -18px;
+        left: -18px;
+        background-color: transparent;
+        content: "";
+        z-index: 3;        
+      }
+
+      :host[has-link] #container:hover:after {
         position: absolute;
         top: -18px;
         right: -18px;
@@ -113,46 +124,77 @@ Placetobe Campaign Card
         overflow: hidden;
       }
 
-      :host .rolling-content {
+      :host .rolling-content[data-rolling] {
         transition: 0.25s transform ease-in-out;        
       }
 
-      :host #container:hover .rolling-content {
+      :host #container:hover .rolling-content[data-rolling] {
         transform: translateY(-66px);
       }      
 
     </style>
 
+    <caas-campaign
+      api-endpoint="[[apiEndpoint]]"
+      id="[[campaignId]]"
+      title="{{title}}"
+      introduction-text="{{introductionText}}"
+      image-url="{{imageUrl}}"
+      body-text="{{campaignText}}"
+    ></caas-campaign>
+
+    <caas-campaign-stats
+      api-endpoint="[[apiEndpoint]]"
+      campaign-id="[[campaignId]]"
+      number-of-funders="{{numberOfFunders}}"
+      required-funding="{{requiredFunding}}"
+      maximum-funding="{{maximumFunding}}"
+      currently-funded="{{currentlyFunded}}"
+      days-left="{{daysLeft}}"
+      labels="{{labels}}"
+      closed="{{closed}}"
+      status-label="{{statusLabel}}"
+    ></caas-campaign-stats>
+
+
     <div id="container">
 
+      <a id="link" href$="[[href]]" hidden$="[[!hasLink]]"></a>
+
       <iron-image
-        src="http://gallivant.com/p/2013/09/student-hotel-amsterdam-6.jpg"
+        src$="[[imageUrl]]"
         sizing="cover"
       ></iron-image>
       
       <section>
         
         <header>
-          <h6>Lening</h6>
-          <h2>The Student Hotel</h2>
+          <h6>[[labels]] campagne</h6>
+          <h2>[[title]]</h2>
         </header>
 
         <main>
           <article>
-            Iedereen heeft een plek nodig.  Een plek om te wonen, werken, ondernemen, relaxen. Een plek om  te zijn.
+          [[introductionText]]
           </article>
         </main>
         
         <footer>
-          <h3>€400000</h3>
-          <placetobe-campaign-progress-bar text-below></placetobe-campaign-progress-bar>
+          <h3>€[[currentlyFunded]]</h3>
+          <placetobe-campaign-progress-bar
+            required-funding="[[requiredFunding]]"
+            maximum-funding="[[maximumFunding]]"
+            currently-funded="[[currentlyFunded]]"
+            text-below
+          ></placetobe-campaign-progress-bar>
 
           <div class="rolling-container">
-            <div class="rolling-content">
-              <strong>300</strong> investeerders<br>
-              nog <strong>10</strong> dagen
+            <div class="rolling-content" data-rolling$="[[hasLink]]">
+              <strong>[[numberOfFunders]]</strong> investeerders<br>
+              <span hidden$="[[closed]]">nog <strong>[[daysLeft]]</strong> dagen<br></span>
+              <span hidden$="[[!closed]]">deze campagne is [[statusLabel]]</span>
               <br>
-              <a class="button" href="#project-url">Bekijk project</a>
+              <a class="button">Bekijk project</a>
             </div>
           </div>
         </footer>
@@ -169,12 +211,40 @@ Placetobe Campaign Card
       is: 'placetobe-campaign-card',
 
       properties: {
-        horizontal: {
+
+        campaignId: {
+          type: String,
+          value: null
+        },
+
+        apiEndpoint: {
+          type: String,
+          value: null
+        },
+
+        href: {
+          type: String,
+          value: null,
+        },
+
+        hasLink: {
+          type: Boolean,
+          computed: '_computeHasLink(href)',
+          reflectToAttribute: true,
+          notify: true
+        },
+
+        horizontalLayout: {
           type: Boolean,
           value: false,
           reflectToAttribute: true
-        },
+        }
+
       },
+
+      _computeHasLink: function(href) {
+        return (!!href);
+      }
 
     });
   </script>

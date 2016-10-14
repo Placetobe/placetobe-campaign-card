@@ -12,6 +12,7 @@
     <link rel="import" href="../placetobe-campaign-card.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
+
     </style>
   </head>
   <body>
@@ -20,13 +21,21 @@
       <h3>Basic placetobe-campaign-card Demo</h3>
       <demo-snippet>
         <template>
-          <placetobe-campaign-card></placetobe-campaign-card>
+          <placetobe-campaign-card
+            api-endpoint="http://canapi.local"
+            campaign-id="429"
+            href="#/test"
+          ></placetobe-campaign-card>
         </template>
       </demo-snippet>
     </div>
 
     <h3>Horizontal Layout</h3>
-    <placetobe-campaign-card horizontal-layout></placetobe-campaign-card>
+    <placetobe-campaign-card
+      api-endpoint="http://canapi.local"
+      campaign-id="638"
+      horizontal-layout
+      ></placetobe-campaign-card>
 
   </body>
 </html>
