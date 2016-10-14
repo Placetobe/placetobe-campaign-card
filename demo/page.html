@@ -36,8 +36,35 @@
       }
 
       #list placetobe-campaign-card {
-        max-width: 33.3333%;
         margin-bottom: 18px;
+      }
+
+      [data-phone="false"] {
+        display: none;
+      }
+
+      @media (min-width: 600px) {
+
+        [data-phone="false"] {
+          display: block;
+        }
+
+        [data-phone="true"] {
+          display: none;
+        }  
+
+      }
+
+      @media (min-width: 600px) {
+        #list placetobe-campaign-card {
+          max-width: 50%;
+        }
+      }
+
+      @media (min-width: 990px) {
+        #list placetobe-campaign-card {
+          max-width: 33.3333%;
+        }
       }
 
       #list placetobe-campaign-card:nth-child(1n+1) {
@@ -58,6 +85,14 @@
         campaign-id="600"
         href="#/test"
         horizontal-layout
+        data-phone="false"
+      ></placetobe-campaign-card>
+
+      <placetobe-campaign-card
+        api-endpoint="http://canapi.local"
+        campaign-id="600"
+        href="#/test"
+        data-phone="true"
       ></placetobe-campaign-card>
 
     </section>
