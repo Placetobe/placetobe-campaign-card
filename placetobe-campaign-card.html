@@ -2,6 +2,7 @@
 <link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../caas-campaign/caas-campaign.html">
 <link rel="import" href="../caas-campaign-stats/caas-campaign-stats.html">
+<link rel="import" href="../placetobe-behaviors/placetobe-styles-behavior.html">
 <link rel="import" href="../placetobe-styles/placetobe-styles.html">
 <link rel="import" href="../placetobe-campaign-progress-bar/placetobe-campaign-progress-bar.html">
 
@@ -94,16 +95,16 @@ Placetobe Campaign Card
       }
 
       :host h6 {
-        @apply(--placetobe-font-body-small);
+        @apply(--placetobe-font-body);
         margin: 18px 0 9px 0;
       }
 
       :host h2 {
-        @apply(--placetobe-font-heading1-small);
+        @apply(--placetobe-font-heading1);
       }
 
       :host h3 {
-        @apply(--placetobe-font-heading3-bold-small);
+        @apply(--placetobe-font-heading3-bold);
         color: var(--placetobe-color-green);
         margin-top: 18px;
       }
@@ -114,7 +115,7 @@ Placetobe Campaign Card
       }
 
       :host article {
-        @apply(--placetobe-font-body-small);
+        @apply(--placetobe-font-body);
         margin: 9px 0;
       }
 
@@ -123,11 +124,11 @@ Placetobe Campaign Card
       }
 
       :host footer {
-        @apply(--placetobe-font-body-serif-small);
+        @apply(--placetobe-font-body-serif);
       }
 
       :host .button {
-        @apply(--placetobe-default-button-small);
+        @apply(--placetobe-default-button);
         margin-top: 18px;
         background-color: var(--placetobe-color-darkblue);
         box-shadow: 0 3px 0 white;
@@ -225,6 +226,7 @@ Placetobe Campaign Card
     Polymer({
 
       is: 'placetobe-campaign-card',
+      behaviors: [PlacetobeStylesBehavior],
 
       properties: {
 
