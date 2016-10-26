@@ -44,7 +44,7 @@ Placetobe Campaign Card
         left: calc(var(--placetobe-margin) - ( var(--placetobe-margin)  * 2 ) );
         background-color: transparent;
         content: "";
-        z-index: 3;        
+        z-index: 3;
       }
 
       :host([has-link]) #container:hover:after {
@@ -56,6 +56,7 @@ Placetobe Campaign Card
         background-color: var(--placetobe-color-yellow);
         content: "";
         z-index: 0;
+        @apply(--placetobe-border-radius);
       }
 
       :host iron-image {
