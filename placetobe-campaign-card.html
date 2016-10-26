@@ -31,7 +31,7 @@ Placetobe Campaign Card
         flex: 1;
       }
 
-      :host[horizontal-layout] #container {
+      :host([horizontal-layout]) #container {
         flex-direction: row-reverse;
         align-items: stretch;
       }
@@ -47,7 +47,7 @@ Placetobe Campaign Card
         z-index: 3;        
       }
 
-      :host[has-link] #container:hover:after {
+      :host([has-link]) #container:hover:after {
         position: absolute;
         top: -18px;
         right: -18px;
@@ -66,20 +66,20 @@ Placetobe Campaign Card
         background-color: var(--placetobe-color-gray);
       }
 
-      :host[horizontal-layout] iron-image {
+      :host([horizontal-layout]) iron-image {
         height: auto;
         flex:2;
       }
 
       @media (min-width: 601px) {
-        :host[horizontal-layout] iron-image {
+        :host([horizontal-layout]) iron-image {
           min-width: calc(50% - 18px);
           max-width: calc(50% - 18px);
         }
       }
 
       @media (min-width: 991px) {
-        :host[horizontal-layout] iron-image {
+        :host([horizontal-layout]) iron-image {
           min-width: calc(66.666% - 12px);
           max-width: calc(66.666% - 12px);
         }
