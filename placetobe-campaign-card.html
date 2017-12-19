@@ -145,7 +145,7 @@ Placetobe Campaign Card
       }
 
       :host #container:hover .rolling-content[data-rolling] {
-        transform: translateY(-72px);
+        transform: translateY(-62px);
       }      
 
     </style>
@@ -209,7 +209,7 @@ Placetobe Campaign Card
             <div class="rolling-content" data-rolling$="[[hasLink]]">
               <strong>[[numberOfFunders]]</strong> investeerders<br>
               <span hidden$="[[closed]]">nog <strong>[[daysLeft]]</strong> dagen</span>
-              <span hidden$="[[!closed]]">deze campagne is [[statusLabel]]</span>
+              <span hidden$="[[!closed]]">[[statusLabel]]</span>
               <br>
               <a class="button">Bekijk project</a>
             </div>
